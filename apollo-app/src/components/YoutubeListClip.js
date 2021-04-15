@@ -15,7 +15,6 @@ class YoutubeListClip extends Component {
         axios
           .get(youtubeIdURL)
           .then(res =>{
-            console.log(res.data)
             this.setState({data:res.data});
           })
           .catch(err => {

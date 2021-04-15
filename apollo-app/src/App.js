@@ -5,6 +5,7 @@ import Header from './components/Header'
 import ListNews from './components/ListNews'
 import YoutubeListClip from './components/YoutubeListClip'
 import Quote from './components/Quote'
+import SpotifyAPI from './components/api/SpotifyAPI'
 
 
 
@@ -19,6 +20,7 @@ render(){
         <ListNews />
         <Quote />
         <YoutubeListClip />
+        <SpotifyAPI />
         
       </>
     );

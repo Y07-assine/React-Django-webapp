@@ -4,7 +4,6 @@ import Youtube from 'react-youtube'
 class YoutubeClip extends Component {
     videoOnReady(event){
         event.target.pauseVideo()
-        console.log(event.target)
     }
     render(){
         const opts = {
