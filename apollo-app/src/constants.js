@@ -9,3 +9,5 @@ export const newsListURL =`${endpoint}/news/`;
 export const youtubeIdURL = `${endpoint}/youtubeid`;
 
 export const quoteURL = `${endpoint}/quote`;
+
+export const albumURL = `${endpoint}/album`;

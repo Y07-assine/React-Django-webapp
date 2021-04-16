@@ -387,6 +387,57 @@ img{
     right: 10%;
   }
 }
+
+
+.owl-carousel .item .product a{
+  overflow: hidden;
+}
+
+.owl-carousel .item .product img{
+  transition: transform .5s ease;
+}
+.owl-carousel .item .product img:hover{
+  transform:scale(1.1);
+}
+
+.owl-carousel .owl-nav button.owl-prev span,
+.owl-carousel .owl-nav button.owl-next span{
+  font-size: 35px;
+  color:var(--color-pri);
+
+}
+.owl-carousel .owl-nav button.owl-prev span{
+  margin-left: -4rem;
+}
+.owl-carousel .owl-nav button.owl-next span{
+  margin-right: -4rem;
+}
+@media  (max-width: 991px) {
+  .owl-carousel .owl-nav button.owl-prev span{
+      margin-left: -2rem;
+  }
+  .owl-carousel .owl-nav button.owl-next span{
+      margin-right: -2rem;
+  }
+}
+
+.owl-carousel {
+  margin-bottom: 0;
+}
+
+.owl-carousel .owl-nav button.owl-prev{
+  left: 0;
+}
+.owl-carousel .owl-nav button.owl-next{
+  right: 0;
+}
+.owl-carousel .owl-nav button{
+  position: absolute;
+  top: 30%;
+  outline: none;
+}
+
+
 .table {
   width: 100%;
   max-width: 100%;

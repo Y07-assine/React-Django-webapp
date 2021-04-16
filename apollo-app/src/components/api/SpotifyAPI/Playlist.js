@@ -22,7 +22,6 @@ class Playlist extends Component{
               method:'POST'
           })
           .then(res =>{
-            console.log(res.data.access_token);
             this.setState({token:res.data.access_token});
             axios('https://api.spotify.com/v1/playlists/37i9dQZF1DWYtEjm4ihp5w/tracks?offset=0&limit=7&market=US',{
               method:'GET',
@@ -32,7 +31,6 @@ class Playlist extends Component{
                 }
           })
           .then(playlistresponse =>{
-              console.log(playlistresponse.data)
               this.setState({data:playlistresponse.data.items})
           });
           axios('https://api.spotify.com/v1/playlists/37i9dQZF1DWYtEjm4ihp5w/images',{
@@ -43,7 +41,6 @@ class Playlist extends Component{
                 }
           })
           .then(imageresponse =>{
-              console.log(imageresponse.data)
               this.setState({playlistimage:imageresponse.data[0]})
           });
           })

@@ -6,6 +6,7 @@ import ListNews from './components/ListNews'
 import YoutubeListClip from './components/YoutubeListClip'
 import Quote from './components/Quote'
 import Playlist from './components/api/SpotifyAPI/Playlist'
+import Album from './components/api/SpotifyAPI/Album'
 
 
 
@@ -21,7 +22,7 @@ render(){
         <Quote />
         <YoutubeListClip />
         <Playlist />
-        
+        <Album />
       </>
     );
   }
