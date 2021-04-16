@@ -2,7 +2,7 @@ import React,{ Component} from 'react';
 import axios from 'axios';
 import {Credentials} from './Credentials'
 
-class SpotifyAPI extends Component{
+class Playlist extends Component{
 
     state ={
         token:'',
@@ -96,4 +96,4 @@ class SpotifyAPI extends Component{
     }
 }
 
-export default SpotifyAPI;
+export default Playlist;
