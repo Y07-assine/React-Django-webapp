@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
-from core.models import News ,YoutubeId ,Quote
-from .serializers import NewsSerializer,YoutubeIDSerializer , QuoteSerializer
+from core.models import News ,YoutubeId ,Quote ,Album
+from .serializers import NewsSerializer,YoutubeIDSerializer , QuoteSerializer ,AlbumSerializer
 from rest_framework.permissions import AllowAny
 from django.db.models import F ,Q
 
@@ -19,3 +19,9 @@ class QuoteView(ListAPIView):
     permission_classes = (AllowAny,)
     serializer_class = QuoteSerializer
     queryset = Quote.objects.all().order_by('?')[:1]
+
+class AlbumView(ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = AlbumSerializer
+    queryset = Album.objects.all().order_by(F('id').desc())
+
