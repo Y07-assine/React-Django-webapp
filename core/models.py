@@ -40,19 +40,18 @@ class Quote(models.Model):
         return self.quote
     
 class Artist(models.Model):
-    name = models.TextField(max_length=100)
-    status = models.TextField(max_length=100)
+    name = models.CharField(max_length=100)
+    status = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
     
 
 class Album(models.Model):
-    name = models.TextField(max_length=100)
-    spotifyID = models.TextField(max_length=150)
+    name = models.CharField(max_length=100)
+    spotifyID = models.CharField(max_length=100)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
-    
     
