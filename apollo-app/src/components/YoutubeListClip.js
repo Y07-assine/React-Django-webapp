@@ -11,11 +11,12 @@ class YoutubeListClip extends Component {
       data: []
     };
     componentDidMount(){
-        this.setState({loading:true});
+      this.setState({loading:true});
         axios
           .get(youtubeIdURL)
           .then(res =>{
             this.setState({data:res.data});
+            this.setState({loading:false});
           })
           .catch(err => {
             this.setState({error:err,loading:false});
@@ -29,8 +30,8 @@ class YoutubeListClip extends Component {
                 <span className="title">LAST CLIPS</span>
             </div> 
             <div className="row"> 
-            {!loading && (
-                <CircularProgress />
+            { loading && (
+                <CircularProgress disableShrink />
             )}
             {error && (
                 <h1>{JSON.stringify({error})}</h1>
