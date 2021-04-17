@@ -3,7 +3,7 @@
 html,
 body {
 
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -238,6 +238,10 @@ img{
   margin: 2rem 5rem;
 }
 
+.album{
+  margin: 2rem 0rem;
+}
+
 .source{
   color: black;
   font-family:'Times New Roman', Times, serif;
@@ -343,10 +347,21 @@ img{
   width: 80px;
 }
 
+.item__album{
+  width: 208px;
+  margin-right: 20px;
+}
+@media only screen and (max-width:1200px) {
+  .item__album{
+    width: 172px;
+    margin-right: 20px;
+  }
+}
+
 .card {
   cursor: pointer;
   background-color: transparent;
-  height: 300px;
+  height: 700px;
   perspective: 1000px;
   color: #fff;
 }
@@ -361,6 +376,38 @@ img{
   transform-style: preserve-3d;
 }
 
+.image__album{
+  width: 94%;
+}
+
+.albums{
+  margin-top: 0rem;
+  margin-right: 5rem;
+  margin-left: 5rem;
+}
+
+
+@media only screen and (max-width: 1000px) {
+.albums{
+  margin-right: 0;
+  margin-left: 0;
+}
+}
+.album__name{
+  font-family: "Baloo Thambi 2",cursive;
+  display: block;
+}
+.album__artist{
+    display: block;
+    font-size: 1rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
+}
+.album__date{
+  color: #666;
+  display: block;
+  font-weight: 500;
+}
 
 .card:hover .card-inner {
   transform: rotateY(180deg);
@@ -389,60 +436,12 @@ img{
 }
 
 
-.owl-carousel .item .product a{
-  overflow: hidden;
-}
-
-.owl-carousel .item .product img{
-  transition: transform .5s ease;
-}
-.owl-carousel .item .product img:hover{
-  transform:scale(1.1);
-}
-
-.owl-carousel .owl-nav button.owl-prev span,
-.owl-carousel .owl-nav button.owl-next span{
-  font-size: 35px;
-  color:var(--color-pri);
-
-}
-.owl-carousel .owl-nav button.owl-prev span{
-  margin-left: -4rem;
-}
-.owl-carousel .owl-nav button.owl-next span{
-  margin-right: -4rem;
-}
-@media  (max-width: 991px) {
-  .owl-carousel .owl-nav button.owl-prev span{
-      margin-left: -2rem;
-  }
-  .owl-carousel .owl-nav button.owl-next span{
-      margin-right: -2rem;
-  }
-}
-
-.owl-carousel {
-  margin-bottom: 0;
-}
-
-.owl-carousel .owl-nav button.owl-prev{
-  left: 0;
-}
-.owl-carousel .owl-nav button.owl-next{
-  right: 0;
-}
-.owl-carousel .owl-nav button{
-  position: absolute;
-  top: 30%;
-  outline: none;
-}
-
 
 .table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 table {
   border-collapse: collapse;

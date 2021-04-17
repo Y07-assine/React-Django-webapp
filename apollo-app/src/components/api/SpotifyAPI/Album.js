@@ -2,22 +2,20 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import {Credentials} from './Credentials'
 import {albumURL} from '../../../constants'
-import Carousel from 'react-elastic-carousel'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import "slick-carousel/slick/slick-theme.css";
 
 
 class Album extends Component{
+
+    
 
     state ={
         token:'',
         error:null,
         albumimage:'',
-        data: [],
-        breakPoints:[
-            {width:1 , itemsToShow:1},
-            {width:550, itemsToShow:2},
-            {width:780, itemsToShow:4},
-            {width:1200, itemsToShow:5}
-        ]
+        data: []
       };
       componentDidMount(){
         const spotity = Credentials();
@@ -59,26 +57,65 @@ class Album extends Component{
           .catch(err => {
             this.setState({error:err});
           });
+
+          
           
         }
 
     render(){
         const {data,token,error,albumimage,breakPoints} = this.state;
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+                },
+                {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+                }
+                
+            ]
+        }
         return(
-            <section className="news">
-                <Carousel breakPoints={breakPoints}>
+            <section className="albums">
+                <div className="lgfgYE album">
+                    <span className="title">New arrivals</span>
+                </div> 
+                <Slider {...settings}>
                     {data.map((album)=>(
-                        <div className="item">
-                            <a href='#'><img src={album.images[0].url} /></a>
-                            <div class="text-center">
-                                <h3 class="album-title">{album.name}</h3>
-                                <h4 class="album-title">{album.artists[0].name}</h4>
+                            <div className="item__album">
+                                <a href='#'><img src={album.images[0].url} className="image__album" /></a>
+                                <div class="text-center">
+                                    <h3 class="album-title">
+                                        <span className="album__name">{album.name}</span>
+                                        <span className="album__artist">{album.artists[0].name}</span>
+                                        <span className="album__date">{album.release_date}</span>
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
-                        ))}
-                </Carousel>
-                    
-
+                    ))}
+                </Slider>
             </section>
         )
     }
