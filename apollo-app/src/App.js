@@ -1,12 +1,9 @@
 
-import React,{ Component, useState } from 'react';
+import React,{ Component} from 'react';
 import './App.css';
-import Header from './components/Header'
-import ListNews from './components/ListNews'
-import YoutubeListClip from './components/YoutubeListClip'
-import Quote from './components/Quote'
-import Playlist from './components/api/SpotifyAPI/Playlist'
-import Album from './components/api/SpotifyAPI/Album'
+import { BrowserRouter as Router , Switch , Route , useParams } from "react-router-dom";
+import Home from './Home';
+
 
 
 
@@ -16,14 +13,11 @@ render(){
     
     return (
       
-      <>
-        <Header />
-        <ListNews />
-        <Quote />
-        <YoutubeListClip />
-        <Playlist />
-        <Album />
-      </>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
     );
   }
 }
