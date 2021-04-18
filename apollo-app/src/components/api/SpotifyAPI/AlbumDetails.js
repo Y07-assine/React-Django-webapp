@@ -9,14 +9,19 @@ import {CircularProgress} from '@material-ui/core';
 
 class Album extends Component{
 
-    
+    constructor(props){
+        super(props);
+        this.state={
+            token:'',
+            error:null,
+            albumID : props.match.params.id,
+            data: [],
+            tracks:[]
+        }
+    }
 
-    state ={
-        token:'',
-        error:null,
-        data: []
-      };
       componentDidMount(){
+          console.log(this.state.albumID);
         const spotity = Credentials();
         this.setState({loading:true});
         axios('https://accounts.spotify.com/api/token',{
@@ -28,9 +33,8 @@ class Album extends Component{
               method:'POST'
           })
           .then(res =>{
-            console.log(res.data.access_token);
             this.setState({token:res.data.access_token});
-                    axios(`https://api.spotify.com/v1/albums/5aUtrbOfZvn6yhgZuVhIFb`,{
+                    axios(`https://api.spotify.com/v1/albums/${this.state.albumID}`,{
                     method:'GET',
                     headers:{
                         'Content-Type':'application/json',
@@ -38,9 +42,9 @@ class Album extends Component{
                     }
                     })
                     .then(response =>{
-                        console.log(response.data)
+                        console.log(response.tracks)
                         this.setState({data: response.data})
-                        console.log(this.state.data)
+                        this.setState({tracks: response.data.tracks.items})
                     });
                 })
 
@@ -53,16 +57,16 @@ class Album extends Component{
         }
 
     render(){
-        const {data,token,error} = this.state;
+        const {data,token,error,tracks} = this.state;
         const sectionStyle = {
-            background: "linear-gradient(to top, white, black)",
+            background: "linear-gradient(white, black)",
             background : "#000 url("+(this.state.data.images ? this.state.data.images[0].url : null) + ")" +"no-repeat center center/cover"
         };
-        console.log(sectionStyle);
         return(
+            <>
             <section className="album__details" style={ sectionStyle } >
                 <div className="container">
-                <div className="row ">
+                <div className="row header_with_cover_art">
                 { !data && (
                 <CircularProgress disableShrink />
                 )}
@@ -74,12 +78,28 @@ class Album extends Component{
                             <span className="album__format">{data.type}</span>
                             <span className="album__name">{data.name}</span>
                             <span className="album__artist">{data.artists ? data.artists[0].name : null}</span>
-                            <span className="album__date">{data.release_date}</span>
+                            <span className="album__date">Released {data.release_date}</span>
                         </h3>
                     </div>
                 </div>
             </div>
             </section>
+
+            <section className="album__tracklist">
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-8">
+                        <h3 class="tracklist border">Tracklist</h3>
+                        <p>
+                        {tracks.map((track,index)=>(
+                            <>{index}. {track.name} <br /></>
+                        ))}</p>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            </>
         )
     }
 }

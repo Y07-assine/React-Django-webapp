@@ -418,7 +418,60 @@ img{
   display: block;
   font-weight: 500;
 }
+.header_with_cover_art {
+    position: relative;
+    background: rgba(0,0,0,.6);
+    padding: 2.25rem 0 1.5rem 0;
+    z-index: 4;
+    color: #fff;
+}
+.album__format{
+  color: #fffb06;
+  text-transform: uppercase;
+}
 
+.album__description .album__name{
+  font-size: 30px;
+}
+
+.album__description .album__artist{
+  font-size: 28px;
+}
+
+.album__description .album__date{
+  color: #ddd;
+  font-size: 14px;
+}
+
+
+.album__tracklist{
+  margin-top: 3rem;
+}
+
+.tracklist{
+    font-family: "Lobster Two";
+    text-transform: none;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+@media (min-width: 768px){
+.tracklist p {
+    columns: 2;
+}
+}
+
+.border{
+  position: relative;
+}
+.border::after{
+  content: '';
+    display: block;
+    width: 50px;
+    height: 5px;
+    background: #009400;
+    margin-top: 1rem;
+}
 .card:hover .card-inner {
   transform: rotateY(180deg);
 }
