@@ -5,6 +5,7 @@ import {albumURL} from '../../../constants'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
 
 
 class Album extends Component{
@@ -105,7 +106,7 @@ class Album extends Component{
                 <Slider {...settings}>
                     {data.map((album)=>(
                             <div className="item__album">
-                                <a href='#'><img src={album.images[0].url} className="image__album" /></a>
+                                <Link to={`/album/${album.id}`}><img src={album.images[0].url} className="image__album" />
                                 <div class="text-center">
                                     <h3 class="album-title">
                                         <span className="album__name">{album.name}</span>
@@ -113,6 +114,7 @@ class Album extends Component{
                                         <span className="album__date">{album.release_date}</span>
                                     </h3>
                                 </div>
+                                </Link>
                             </div>
                     ))}
                 </Slider>

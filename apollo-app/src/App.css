@@ -386,12 +386,22 @@ img{
   margin-left: 5rem;
 }
 
+.album__details{
+  margin-top: 3.5rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.album__description{
+  margin-top: 3rem;
+}
 
 @media only screen and (max-width: 1000px) {
-.albums{
+.albums,
+.album__details{
   margin-right: 0;
   margin-left: 0;
 }
+
 }
 .album__name{
   font-family: "Baloo Thambi 2",cursive;

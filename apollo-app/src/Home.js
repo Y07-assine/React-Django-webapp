@@ -16,7 +16,6 @@ render(){
     return (
       
       <>
-        <Header />
         <ListNews />
         <Quote />
         <YoutubeListClip />
