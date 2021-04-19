@@ -90,9 +90,9 @@ class Album extends Component{
                 <div className="row">
                     <div className="col-sm-8">
                         <h3 class="tracklist border">Tracklist</h3>
-                        <p>
+                        <p className="tracklist__item">
                         {tracks.map((track,index)=>(
-                            <>{index}. {track.name} <br /></>
+                            <>{index+1}. {track.name} <br /></>
                         ))}</p>
                     </div>
                 </div>

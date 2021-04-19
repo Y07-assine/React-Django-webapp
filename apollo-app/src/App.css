@@ -87,7 +87,7 @@ ul {
   align-items: center;
   padding: 0.3rem;
   border: 1px solid rgb(0, 0, 0);
-  background-color: rgb(255, 246, 193);
+  background-color: #368A5A;
   border-radius: 50%;
   transition: background-color 0.3s ease-in-out;
 }
@@ -459,6 +459,11 @@ img{
 .tracklist p {
     columns: 2;
 }
+}
+
+.tracklist__item{
+  margin: 1rem;
+  font-size: 20px;
 }
 
 .border{

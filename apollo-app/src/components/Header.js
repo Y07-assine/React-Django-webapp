@@ -12,7 +12,7 @@ function Header()  {
 
     return (
         <header className="header">
-            <div className="navigation" style={{background:'linear-gradient(-90deg,#F9E1A2 20%,rgba(251,223,147,1) 60%,#F7D785)'}}>
+            <div className="navigation" style={{background:'linear-gradient(-90deg,#3D9262 20%,#3fb573 60%,#368A5A)'}}>
                 <div className="container">
                     <nav className="nav ">
                         <div className="nav__hamburger " onClick={handleClick} >
