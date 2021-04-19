@@ -183,6 +183,56 @@ ul {
   margin: 1rem;
 }
 
+.search-input{
+    height: 40px;
+    width: 75%;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,1)
+
+}
+.has-search .form-control {
+  padding-left: 3.375rem;
+  padding-right: 3rem;
+  color: darkgray;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 3.55rem;
+  text-align: center;
+  pointer-events: none;
+  color: grey ;
+  padding-left: 1rem;
+}
+
+@media only screen and (max-width:1200px) {
+  .search-input{
+      height: 35px; width: 200px; border-radius: 20px;
+  }
+}
+
+
+  .nav__menu {
+      position: fixed;
+      top: 0;
+      left: -30rem;
+      background-color: rgba(0,0,0,.6);
+      z-index: 9990;
+      height: 100%;
+      transition: all 0.5s;
+  }
+
+  .nav__menu.open {
+      left: 0rem;
+      width: 40%;
+
+  }
+
+
 .news{
   margin-top: 7rem;
 }

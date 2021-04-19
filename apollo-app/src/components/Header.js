@@ -9,6 +9,9 @@ function Header()  {
     const [click,setClick] = useState(false);
     const handleClick = () =>setClick(!click);
     const closeMenu = () =>setClick(false)
+    const [searchbar,setSearchbar] = useState(false);
+    const handleSearchbar = () =>setSearchbar(!searchbar);
+    const closeSearchbar = () =>setSearchbar(false)
 
     return (
         <header className="header">
@@ -19,7 +22,7 @@ function Header()  {
                             <Icon name={'menu'} size={40}  />
                         </div>
                         <div className="search">
-                            <a href="#" className="icon__item">
+                            <a href="#" className="icon__item" onClick={handleSearchbar}>
 
                                 <Icon name={'search'} size={30} />
                             </a>
@@ -67,7 +70,20 @@ function Header()  {
 
                         </ul>
                     </div>
+                   
                 </nav>
+            </div>
+            <div className={searchbar ? 'nav__menu open' :'nav__menu'}>
+                <ul className="search-input navbar-nav m-auto  ">
+                    <div className="form-group has-search">
+                    <form > 
+                        <input className="search-input form-control form-control-sm mr-sm-2 mb-0" name="query" type="text" style={{fontSize: 20+"px"}} placeholder="Search Artist " />
+                        <a href="#" className="close__toggle" onClick={closeSearchbar}>
+                            <Icon name={'cross'} size={25} color={'darkgrey'} />
+                        </a>
+                    </form>
+                    </div>
+                </ul>
             </div>
 
         </header>
