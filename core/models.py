@@ -42,6 +42,7 @@ class Quote(models.Model):
 class Artist(models.Model):
     name = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
+    spotifyID = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name

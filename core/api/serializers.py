@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import News,YoutubeId,Quote,Album
+from core.models import News,YoutubeId,Quote,Album,Artist
 
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,3 +40,13 @@ class AlbumSerializer(serializers.ModelSerializer):
             'spotifyID',
             'artist'
         )
+
+class ArtistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Artist
+        fields = (
+        'name',
+        'status',
+        'spotifyID'
+        )
+
