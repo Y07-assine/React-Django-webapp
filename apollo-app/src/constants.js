@@ -11,3 +11,5 @@ export const youtubeIdURL = `${endpoint}/youtubeid`;
 export const quoteURL = `${endpoint}/quote`;
 
 export const albumURL = `${endpoint}/album`;
+
+export const artistURL = `${endpoint}/artist`;

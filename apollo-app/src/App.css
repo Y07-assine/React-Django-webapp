@@ -92,8 +92,21 @@ ul {
   transition: background-color 0.3s ease-in-out;
 }
 
-.home{
+.home-nav{
   margin-left: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+.home-nav,.search{
+  display: none;
+}
+.nav__logo{
+  width: 50%;
+}
+.nav__logo img{
+  width: 200px;
+}
+
 }
 
 #nav__down{
@@ -505,6 +518,17 @@ img{
     font-size: 30px;
 }
 
+.search__result{
+  margin: 1rem;
+}
+.result{
+  margin: 1rem;
+}
+.close__SearchBar{
+    margin-left: 1rem;
+    margin-top: 0.6rem;
+}
+
 @media (min-width: 768px){
 .tracklist p {
     columns: 2;
@@ -553,8 +577,16 @@ img{
   }
 }
 
+.autoContainer{
+  background-color: white;
+  color: black;
+  font-family: "Baloo Thambi 2",cursive;
+}
 
-
+.form__input{
+  display: flex;
+  justify-content: initial;
+}
 .table {
   width: 100%;
   max-width: 100%;

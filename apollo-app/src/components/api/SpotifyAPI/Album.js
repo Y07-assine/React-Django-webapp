@@ -30,12 +30,10 @@ class Album extends Component{
               method:'POST'
           })
           .then(res =>{
-            console.log(res.data.access_token);
             this.setState({token:res.data.access_token});
             axios
             .get(albumURL)
             .then(albumres =>{
-                console.log(albumres.data[0].spotifyID)
                 albumres.data.map((id)=>{
                     axios(`https://api.spotify.com/v1/albums/${id.spotifyID}`,{
                     method:'GET',
@@ -45,9 +43,7 @@ class Album extends Component{
                     }
                     })
                     .then(response =>{
-                        console.log(response.data)
                         this.setState({data: this.state.data.concat(response.data)})
-                        console.log(this.state.data)
                     });
                 })
                 
