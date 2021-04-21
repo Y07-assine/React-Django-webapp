@@ -1,8 +1,9 @@
-import React,{ Component,useRef} from 'react';
+import React,{ Component} from 'react';
 import logo from '../img/logo.png';
 import {artistURL} from '../constants';
 import Icon from './ui/icon';
 import axios from 'axios';
+import {Credentials} from './api/SpotifyAPI/Credentials';
 
 class Header extends Component {
     constructor(){
@@ -33,26 +34,59 @@ class Header extends Component {
     }
     closeSearchbar(){
         this.setState({searchbar:false});
+        this.setState({display:false});
     }
     setDisplay(){
         this.setState({display:!this.state.display});
     }
     
     componentDidMount(){
-        axios
-        .get(artistURL)
-        .then(artistres =>{
-            console.log(artistres.data); 
-            this.setState({options:artistres.data});
-            console.log(this.state.options);
-        });
-    }
+        const spotity = Credentials();
+        this.setState({loading:true});
+        axios('https://accounts.spotify.com/api/token',{
+              headers:{
+                  'Content-Type':'application/x-www-form-urlencoded',
+                  'Authorization':'Basic ' + btoa(spotity.ClientId + ':' + spotity.ClientSecret)
+              },
+              data:'grant_type=client_credentials',
+              method:'POST'
+          })
+          .then(res =>{
+            this.setState({token:res.data.access_token});
+            axios
+            .get(artistURL)
+            .then(artistres =>{
+                artistres.data.map((id)=>{
+                    axios(`https://api.spotify.com/v1/artists/${id.spotifyID}`,{
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json',
+                        'Authorization':'Bearer ' + this.state.token
+                    }
+                    })
+                    .then(response =>{
+                        
+                        this.setState({options: this.state.options.concat(response.data)})
+                        console.log(this.state.options);
+                    });
+                })
+                
+                
+            })
+          
+          })
+          .catch(err => {
+            this.setState({error:err});
+          });
+
+          console.log(this.state.options);
+          
+        }
 render(){
     const {click,searchbar,display,options,search} = this.state;
     const setArtist= artist =>{
         this.setState({search:artist});
         this.setState({display:false});
-    const wrapperRef = useRef(null);
     }
     return (
         
@@ -130,9 +164,10 @@ render(){
                     <div className="autoContainer">
                         <h5 className="search__result">SEARCH RESULTS</h5>
                         <hr />
-                        {options.filter(({name})=>name.includes(search.toUpperCase)).map((opt)=>{
+                        {options.filter(({name})=>name.includes(search)).map((opt)=>{
                             return(
                                 <div className="result">
+                                    <img src={opt.images[0].url} alt={opt.name} />
                                     <span>{opt.name}</span>
                                 </div>
                             )
