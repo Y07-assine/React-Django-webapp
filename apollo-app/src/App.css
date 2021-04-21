@@ -531,6 +531,7 @@ img{
   height: 50px;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  border-radius: 50%;
 }
 
 .result span{

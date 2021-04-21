@@ -21,7 +21,7 @@ render(){
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/album/:id" component={AlbumDetails} />
-          <Route path="/artist/:id" component={ArtistDescription} />
+          <Route path="/artist/:id" component={ArtistDescription} forceRefresh={true} />
         </Switch>
       </Router>
     );

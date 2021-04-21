@@ -52,7 +52,7 @@ class ArtistDescription extends Component{
         }
 
     render(){
-        const {data,token,error,tracks} = this.state;
+        const {data,token,error} = this.state;
         const sectionStyle = {
             background: "linear-gradient(white, black)",
             background : "#000 url("+(this.state.data.images ? this.state.data.images[1].url : null) + ")" +"no-repeat center center/cover"

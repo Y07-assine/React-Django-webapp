@@ -40,7 +40,6 @@ class Header extends Component {
     setDisplay(){
         this.setState({display:!this.state.display});
     }
-    
     componentDidMount(){
         const spotity = Credentials();
         this.setState({loading:true});
@@ -83,11 +82,19 @@ class Header extends Component {
           console.log(this.state.options);
           
         }
+
 render(){
     const {click,searchbar,display,options,search} = this.state;
     const setArtist= artist =>{
         this.setState({search:artist});
         this.setState({display:false});
+    let matches = options.filter((option)=>{
+        const regex = new RegExp(`^${search}`,'gi');
+        return option.name.match(regex);
+    });
+    if(search.length === 0){
+        matches=[];
+    }
     }
     return (
         
@@ -165,13 +172,17 @@ render(){
                     <div className="autoContainer">
                         <h5 className="search__result">SEARCH RESULTS</h5>
                         <hr />
-                        {options.filter(({name})=>name.includes(search)).map((artist)=>{
+                         {options.filter((option)=>{
+                            const regex = new RegExp(`^${search}`,'gi');
+                            return option.name.match(regex);
+                        }).map((artist)=>{
                             return(
                                 <div className="result">
                                     <Link to={`/artist/${artist.id}`}>
                                         <img src={artist.images[0].url} alt={artist.name} />
-                                        <span>{artist.name}</span>
                                     </Link>
+                                        <span>{artist.name}</span>
+                                    
                                 </div>
                             )
                         })}
