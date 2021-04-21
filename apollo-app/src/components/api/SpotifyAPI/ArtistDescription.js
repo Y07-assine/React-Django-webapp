@@ -1,23 +1,19 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import {Credentials} from './Credentials';
-import {albumURL} from '../../../constants';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
 import {CircularProgress} from '@material-ui/core';
 
-
-class AlbumDetails extends Component{
+class ArtistDescription extends Component{
 
     constructor(props){
         super(props);
         this.state={
             token:'',
             error:null,
-            albumID : props.match.params.id,
-            data: [],
-            tracks:[]
+            artistID : props.match.params.id,
+            data:[]
         }
     }
 
@@ -35,7 +31,7 @@ class AlbumDetails extends Component{
           })
           .then(res =>{
             this.setState({token:res.data.access_token});
-                    axios(`https://api.spotify.com/v1/albums/${this.state.albumID}`,{
+                    axios(`https://api.spotify.com/v1/artists/${this.state.artistID}`,{
                     method:'GET',
                     headers:{
                         'Content-Type':'application/json',
@@ -43,9 +39,7 @@ class AlbumDetails extends Component{
                     }
                     })
                     .then(response =>{
-                        console.log(response.tracks)
                         this.setState({data: response.data})
-                        this.setState({tracks: response.data.tracks.items})
                     });
                 })
 
@@ -61,7 +55,7 @@ class AlbumDetails extends Component{
         const {data,token,error,tracks} = this.state;
         const sectionStyle = {
             background: "linear-gradient(white, black)",
-            background : "#000 url("+(this.state.data.images ? this.state.data.images[0].url : null) + ")" +"no-repeat center center/cover"
+            background : "#000 url("+(this.state.data.images ? this.state.data.images[1].url : null) + ")" +"no-repeat center center/cover"
         };
         return(
             <>
@@ -86,22 +80,8 @@ class AlbumDetails extends Component{
             </div>
             </section>
 
-            <section className="album__tracklist">
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-8">
-                        <h3 class="tracklist border">Tracklist</h3>
-                        <p className="tracklist__item">
-                        {tracks.map((track,index)=>(
-                            <>{index+1}. {track.name} <br /></>
-                        ))}</p>
-                    </div>
-                </div>
-            </div>
-            </section>
-
             </>
         )
     }
 }
-export default AlbumDetails;
+export default ArtistDescription;

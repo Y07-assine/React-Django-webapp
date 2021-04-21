@@ -4,6 +4,7 @@ import {artistURL} from '../constants';
 import Icon from './ui/icon';
 import axios from 'axios';
 import {Credentials} from './api/SpotifyAPI/Credentials';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     constructor(){
@@ -164,11 +165,13 @@ render(){
                     <div className="autoContainer">
                         <h5 className="search__result">SEARCH RESULTS</h5>
                         <hr />
-                        {options.filter(({name})=>name.includes(search)).map((opt)=>{
+                        {options.filter(({name})=>name.includes(search)).map((artist)=>{
                             return(
                                 <div className="result">
-                                    <img src={opt.images[0].url} alt={opt.name} />
-                                    <span>{opt.name}</span>
+                                    <Link to={`/artist/${artist.id}`}>
+                                        <img src={artist.images[0].url} alt={artist.name} />
+                                        <span>{artist.name}</span>
+                                    </Link>
                                 </div>
                             )
                         })}

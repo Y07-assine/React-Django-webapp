@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path('album/<str:id>', TemplateView.as_view(template_name='index.html')),
+    path('artist/<str:id>', TemplateView.as_view(template_name='index.html')),
     path('api/',include('core.api.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
