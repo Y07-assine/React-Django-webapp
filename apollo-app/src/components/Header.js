@@ -4,11 +4,11 @@ import {artistURL} from '../constants';
 import Icon from './ui/icon';
 import axios from 'axios';
 import {Credentials} from './api/SpotifyAPI/Credentials';
-import { Link } from 'react-router-dom';
+import { Link,history,Redirect } from 'react-router-dom';
 
 class Header extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             click:false,
             searchbar:false,
@@ -21,7 +21,16 @@ class Header extends Component {
         this.closeMenu=this.closeMenu.bind(this);
         this.closeSearchbar=this.closeSearchbar.bind(this);
         this.setDisplay=this.setDisplay.bind(this);
+        this.reload = this.reload.bind(this);
     }
+    reload(){
+        const current = this.props.location;
+        console.log(current);
+        this.props.history.replace('/reload');
+          setTimeout(()=>{
+            this.props.history.replace(current);
+          })
+      }
 
     handleClick(){
         this.setState({click:!this.state.click});
@@ -178,8 +187,8 @@ render(){
                         }).map((artist)=>{
                             return(
                                 <div className="result">
-                                    <Link to={`/artist/${artist.id}`}>
-                                        <img src={artist.images[0].url} alt={artist.name} />
+                                    <Link to={`/artist/${this.state.artistID ? this.state.artistID : artist.id}`}>
+                                        <img src={artist.images[0].url} alt={artist.name}/>
                                     </Link>
                                         <span>{artist.name}</span>
                                     
