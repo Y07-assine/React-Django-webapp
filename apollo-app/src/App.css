@@ -478,6 +478,18 @@ img{
   width: 50%;
   left: 30%;
 }
+.top__projects{
+  margin-top: 6rem;
+  display: block;
+}
+.image__project{
+  width: 280px;
+}
+.project__format{
+  color: green;
+    text-transform: uppercase;
+    font-size: 14px;
+}
 @media only screen and (max-width: 800px) {
   .artist__description img{
       top: 50%;

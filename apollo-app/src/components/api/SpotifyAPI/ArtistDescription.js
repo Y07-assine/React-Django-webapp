@@ -14,12 +14,12 @@ class ArtistDescription extends Component{
             error:null,
             artistID : props.match.params.id,
             followers:'',
+            top_tracks:[],
             data:[]
         }
     }
 
       componentDidMount(){
-          console.log(this.state.albumID);
         const spotity = Credentials();
         this.setState({loading:true});
         axios('https://accounts.spotify.com/api/token',{
@@ -43,6 +43,17 @@ class ArtistDescription extends Component{
                         this.setState({data: response.data});
                         this.setState({followers:response.data.followers.total})
                     });
+                    axios(`https://api.spotify.com/v1/artists/${this.state.artistID}/albums`,{
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json',
+                        'Authorization':'Bearer ' + this.state.token
+                    }
+                    })
+                    .then(res =>{
+                        this.setState({top_tracks: res.data.items});
+
+                    });
                 })
 
           .catch(err => {
@@ -54,7 +65,7 @@ class ArtistDescription extends Component{
         }
 
     render(){
-        const {data,token,error,followers} = this.state;
+        const {data,token,error,followers,top_tracks} = this.state;
         const sectionStyle = {
             background: "linear-gradient(white, black)",
             background : "#000 url("+(this.state.data.images ? this.state.data.images[2].url : null) + ")" +"no-repeat center center/cover"
@@ -80,8 +91,26 @@ class ArtistDescription extends Component{
                 </div>
             </div>
             </section>
-            <section className="artist__infos">
-                
+            <section className="artist__projects">
+                <div className="row top__projects">
+                <h3 class="tracklist border">Popular {data.name} Projects</h3>
+                    <div className="grid-container">
+                        {top_tracks.map((project)=>(
+                            <div>
+                            <img src={project.images[0].url} className="image__project" />
+                            <div class="text-center">
+                                <h3 class="album-title">
+                                    <span className="album__name">{project.name}</span>
+                                    <span className="project__format">{project.album_type}</span>
+                                    <span className="album__date">{project.release_date}</span>
+                                </h3>
+                            </div>
+                            </div>
+                        ))}
+                        
+                    </div>
+
+                </div>
             </section>
 
             </>

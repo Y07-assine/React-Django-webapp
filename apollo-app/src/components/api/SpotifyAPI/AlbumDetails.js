@@ -73,7 +73,7 @@ class AlbumDetails extends Component{
                     <div className="col-sm-4 album__description">
                         <img src={data.images ? data.images[0].url : null} />
                     </div>
-                    <div className="col-sm-8 item-news album__description">
+                    <div className="col-sm-12 item-news album__description">
                         <h3 class="album-title">
                             <span className="album__format">{data.type}</span>
                             <span className="album__name">{data.name}</span>
