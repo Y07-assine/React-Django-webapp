@@ -82,12 +82,7 @@ class Header extends Component {
           console.log(this.state.options);
           
         }
-        navMenu(){
-            if(window.outerWidth >600 ){
-                document.getElementsByClassName("nav__item").append
-            }
-        }
-
+        
 render(){
     const {click,searchbar,display,options,search} = this.state;
     const setArtist= artist =>{

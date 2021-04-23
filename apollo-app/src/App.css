@@ -240,7 +240,7 @@ ul {
   .nav__menu {
       position: fixed;
       top: 0;
-      left: -30rem;
+      left: -40rem;
       background-color: rgba(0,0,0,.6);
       z-index: 9990;
       height: 100%;
@@ -461,13 +461,42 @@ img{
   margin-left: 5rem;
 }
 
-.album__details{
+.album__details,.artist__details{
   margin-top: 3.5rem;
   margin-left: -1rem;
   margin-right: -1rem;
 }
+
 .album__description{
   margin-top: 3rem;
+}
+.artist__description img{
+  position: relative;
+  top: 40%;
+  border-radius: 50%;
+  border: yellow solid;
+  width: 50%;
+  left: 30%;
+}
+@media only screen and (max-width: 800px) {
+  .artist__description img{
+      top: 50%;
+      width: 60%;
+  }
+
+}
+@media only screen and (max-width: 600px) {
+  .artist__description img{
+      top: 60%;
+      width: 65%;
+  }
+
+}
+.artist__description{
+  width: 50%;
+}
+.artist__infos{
+  width: 50%;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -500,9 +529,25 @@ img{
     z-index: 4;
     color: #fff;
 }
+.header_with_cover_artist{
+  position: relative;
+    background: rgba(0,0,0,.6);
+    padding: 2.25rem 0 1.5rem 0;
+    z-index: 4;
+    color: #fff;
+    display: flex;
+}
 .album__format{
   color: #fffb06;
   text-transform: uppercase;
+}
+.followers{
+  color: #ff1464;
+  margin-right: 0.5rem;
+}
+.artist-title{
+  margin-top: 9rem;
+  
 }
 
 .album__description .album__name{
@@ -521,6 +566,15 @@ img{
 
 .album__tracklist{
   margin-top: 3rem;
+}
+.artist__name{
+  font-family: "Baloo Thambi 2",cursive;
+  display: block;
+  font-size: 34px;
+}
+.artist__status{
+  color: #fffb06;
+    text-transform: uppercase;
 }
 
 .tracklist{
@@ -571,6 +625,7 @@ img{
 .tracklist__item{
   margin: 1rem;
   font-size: 20px;
+  column-count: 2;
 }
 
 .border{

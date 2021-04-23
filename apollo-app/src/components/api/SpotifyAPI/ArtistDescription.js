@@ -13,6 +13,7 @@ class ArtistDescription extends Component{
             token:'',
             error:null,
             artistID : props.match.params.id,
+            followers:'',
             data:[]
         }
     }
@@ -39,7 +40,8 @@ class ArtistDescription extends Component{
                     }
                     })
                     .then(response =>{
-                        this.setState({data: response.data})
+                        this.setState({data: response.data});
+                        this.setState({followers:response.data.followers.total})
                     });
                 })
 
@@ -52,32 +54,34 @@ class ArtistDescription extends Component{
         }
 
     render(){
-        const {data,token,error} = this.state;
+        const {data,token,error,followers} = this.state;
         const sectionStyle = {
             background: "linear-gradient(white, black)",
-            background : "#000 url("+(this.state.data.images ? this.state.data.images[1].url : null) + ")" +"no-repeat center center/cover"
+            background : "#000 url("+(this.state.data.images ? this.state.data.images[2].url : null) + ")" +"no-repeat center center/cover"
         };
         return(
             <>
-            <section className="album__details" style={ sectionStyle } >
+            <section className="artist__details" style={ sectionStyle } >
                 <div className="container">
-                <div className="row header_with_cover_art">
+                <div className="row header_with_cover_artist">
                 { !data && (
                 <CircularProgress disableShrink />
                 )}
-                    <div className="col-sm-4 album__description">
-                        <img src={data.images ? data.images[0].url : null} />
+                    <div className=" artist__description">
+                        <img src={data.images ? data.images[0].url : null}  />
                     </div>
-                    <div className="col-sm-8 item-news album__description">
-                        <h3 class="album-title">
-                            <span className="album__format">{data.type}</span>
-                            <span className="album__name">{data.name}</span>
-                            <span className="album__artist">{data.artists ? data.artists[0].name : null}</span>
-                            <span className="album__date">Released {data.release_date}</span>
+                    <div className=" item-news artist__infos">
+                        <h3 class="artist-title">
+                            <span className="artist__status">{data.type}</span>
+                            <span className="artist__name">{data.name}</span>
+                            <span><span className="followers">{followers}</span> Followers</span>
                         </h3>
                     </div>
                 </div>
             </div>
+            </section>
+            <section className="artist__infos">
+                
             </section>
 
             </>

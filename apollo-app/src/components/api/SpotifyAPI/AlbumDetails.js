@@ -22,7 +22,6 @@ class AlbumDetails extends Component{
     }
 
       componentDidMount(){
-          console.log(this.state.albumID);
         const spotity = Credentials();
         this.setState({loading:true});
         axios('https://accounts.spotify.com/api/token',{
@@ -43,7 +42,7 @@ class AlbumDetails extends Component{
                     }
                     })
                     .then(response =>{
-                        console.log(response.tracks)
+                        console.log(response.data)
                         this.setState({data: response.data})
                         this.setState({tracks: response.data.tracks.items})
                     });
@@ -61,7 +60,7 @@ class AlbumDetails extends Component{
         const {data,token,error,tracks} = this.state;
         const sectionStyle = {
             background: "linear-gradient(white, black)",
-            background : "#000 url("+(this.state.data.images ? this.state.data.images[0].url : null) + ")" +"no-repeat center center/cover"
+            background : "#000 url("+(this.state.data.images ? this.state.data.images[1].url : null) + ")" +"no-repeat center center/cover"
         };
         return(
             <>
