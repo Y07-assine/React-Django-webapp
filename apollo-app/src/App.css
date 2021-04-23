@@ -224,7 +224,15 @@ ul {
 
 @media only screen and (max-width:1200px) {
   .search-input{
-      height: 35px; width: 200px; border-radius: 20px;
+     width: 200px; 
+  }
+}
+@media only screen and (max-width:1000px) {
+  .search-input{
+     width: 200px; 
+  }
+  .nav__menu{
+    width: 60%;
   }
 }
 
@@ -259,9 +267,13 @@ img{
   margin-left: 5rem;
   display: flex;
 }
+.youtubeClips{
+  margin-right: 5rem;
+  margin-left: 5rem;
+}
 
 @media only screen and (max-width: 1000px) {
-.row{
+.row,.youtubeClips{
   margin-right: 0;
   margin-left: 0;
 }

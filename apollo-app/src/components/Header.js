@@ -21,16 +21,7 @@ class Header extends Component {
         this.closeMenu=this.closeMenu.bind(this);
         this.closeSearchbar=this.closeSearchbar.bind(this);
         this.setDisplay=this.setDisplay.bind(this);
-        this.reload = this.reload.bind(this);
     }
-    reload(){
-        const current = this.props.location;
-        console.log(current);
-        this.props.history.replace('/reload');
-          setTimeout(()=>{
-            this.props.history.replace(current);
-          })
-      }
 
     handleClick(){
         this.setState({click:!this.state.click});
@@ -90,6 +81,11 @@ class Header extends Component {
 
           console.log(this.state.options);
           
+        }
+        navMenu(){
+            if(window.outerWidth >600 ){
+                document.getElementsByClassName("nav__item").append
+            }
         }
 
 render(){
@@ -151,6 +147,7 @@ render(){
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">FEATURED</a>
                             </li>
+                            {window.outerWidth <600 ? <hr/>: null}
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">NEWS</a>
                             </li>

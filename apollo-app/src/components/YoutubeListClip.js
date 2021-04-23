@@ -71,6 +71,7 @@ class YoutubeListClip extends Component {
             {error && (
                 <h1>{JSON.stringify({error})}</h1>
             )}
+            <div className="youtubeClips">
             <Slider {...settings}>
             {data.map((video)=>(
                 <div>
@@ -78,6 +79,7 @@ class YoutubeListClip extends Component {
                 </div>
             ))}
             </Slider>
+            </div>
         </section>
         );
       }
