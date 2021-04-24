@@ -689,6 +689,62 @@ img{
   color: black;
   font-family: "Baloo Thambi 2",cursive;
 }
+/*
+=======
+footer
+=======
+*/
+.footer{
+  background-color: #5e6163;
+  padding: 6rem 1rem;
+  line-height: 3rem;
+}
+.footer-top__box span svg{
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: #ccc;
+}
+.footer-top__box span{
+  margin-right: 1rem;
+}
+.footer__top{
+  padding-left: 5rem;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  color: #ccc;
+}
+
+.footer-top__box a:link,
+.footer-top__box a:visited{
+  display: block;
+  color: white;
+  font-size: 1.4rem;
+  transition: 0.6s;
+}
+.footer-top__box a:hover{
+  color: #1c6eab;
+}
+.footer-top__box div{
+  color: white;
+  font-size: 1.4rem;
+}
+.footer-top__box h3{
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 998px){
+  .footer__top{
+      grid-template-columns: repeat(2,1fr);
+      grid-gap: 2rem;
+  }
+}
+@media only screen and (max-width: 768px){
+  .footer__top{
+      grid-template-columns: 1fr;
+  }
+}
+
 
 .form__input{
   display: flex;
