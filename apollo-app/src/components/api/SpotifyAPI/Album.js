@@ -96,6 +96,7 @@ class Album extends Component{
         }
         return(
             <section className="albums">
+                <div className="container">
                 <div className="lgfgYE album">
                     <span className="title">New arrivals</span>
                 </div> 
@@ -114,6 +115,7 @@ class Album extends Component{
                             </div>
                     ))}
                 </Slider>
+                </div>
             </section>
         )
     }

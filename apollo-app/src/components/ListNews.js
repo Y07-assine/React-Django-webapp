@@ -6,6 +6,7 @@ import axios from 'axios';
 
 
 
+
 class ListNews extends Component{
     state ={
         loading: false,
@@ -18,8 +19,7 @@ class ListNews extends Component{
         axios
           .get(newsListURL)
           .then(res =>{
-            this.setState({lastdata:res.data[0]})
-            this.setState({data:res.data});
+            this.setState({lastdata:res.data[0],data:res.data,loading:false});
           })
           .catch(err => {
             this.setState({error:err,loading:false});

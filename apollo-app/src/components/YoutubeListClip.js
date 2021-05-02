@@ -2,7 +2,7 @@ import React,{ Component, useState } from 'react';
 import axios from 'axios';
 import {youtubeIdURL} from '../constants';
 import YoutubeClip from '../components/api/Youtube';
-import {CircularProgress} from '@material-ui/core'
+import { Loader } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
@@ -18,8 +18,7 @@ class YoutubeListClip extends Component {
         axios
           .get(youtubeIdURL)
           .then(res =>{
-            this.setState({data:res.data});
-            this.setState({loading:false});
+            this.setState({data:res.data,loading:false});
           })
           .catch(err => {
             this.setState({error:err,loading:false});
@@ -66,12 +65,9 @@ class YoutubeListClip extends Component {
                 <span className="title">LAST CLIPS</span>
             </div> 
             { loading && (
-                <CircularProgress disableShrink />
+                <Loader active inline='centered' />
             )}
-            {error && (
-                <h1>{JSON.stringify({error})}</h1>
-            )}
-            <div className="youtubeClips">
+            <div className="container youtubeClips">
             <Slider {...settings}>
             {data.map((video)=>(
                 <div>
