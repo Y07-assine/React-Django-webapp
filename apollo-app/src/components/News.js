@@ -14,7 +14,7 @@ const News =({news})=>{
             </div>
             <div className="image__news">
                 <h5 className="author">
-                    By {news.author.lastname} /
+                    By {news.author_name} /
                     <span className="date">{news.date}</span>
                     <span className="source">Source:{news.source}</span>
                 </h5>

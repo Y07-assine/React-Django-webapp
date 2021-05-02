@@ -29,7 +29,7 @@ class ListNews extends Component{
         const {data, error ,loading,lastdata} = this.state;
     return(
         <>
-        <Bignews title={lastdata.title} source={lastdata.source} author={lastdata.author} date={lastdata.date} image={lastdata.image} />
+        <Bignews title={lastdata.title} source={lastdata.source} author={lastdata.author_name} date={lastdata.date} image={lastdata.image} />
         <section className="py-5 news">
             <div className="row grid-container">
                 {data.slice(1).map((news)=>(

@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from core.models import News,YoutubeId,Quote,Album,Artist
+from core.models import News,YoutubeId,Quote,Album,Artist,Author
 
 class NewsSerializer(serializers.ModelSerializer):
+    author_name = serializers.CharField(source='author.firstname')
     class Meta:
         model = News
         fields = (
@@ -11,7 +12,7 @@ class NewsSerializer(serializers.ModelSerializer):
             'date',
             'image',
             'slug',
-            'author'
+            'author_name'
         )
 
 class YoutubeIDSerializer(serializers.ModelSerializer):
