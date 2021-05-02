@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+import { Loader } from 'semantic-ui-react';
 
 
 class Album extends Component{
@@ -15,7 +16,7 @@ class Album extends Component{
     state ={
         token:'',
         error:null,
-        albumimage:'',
+        loading:false,
         data: []
       };
       componentDidMount(){
@@ -43,7 +44,7 @@ class Album extends Component{
                     }
                     })
                     .then(response =>{
-                        this.setState({data: this.state.data.concat(response.data)})
+                        this.setState({data: this.state.data.concat(response.data),loading:false})
                     });
                 })
                 
@@ -60,7 +61,7 @@ class Album extends Component{
         }
 
     render(){
-        const {data,token,error,albumimage,breakPoints} = this.state;
+        const {data,error,loading} = this.state;
         const settings = {
             dots: true,
             infinite: true,
@@ -100,6 +101,9 @@ class Album extends Component{
                 <div className="lgfgYE album">
                     <span className="title">New arrivals</span>
                 </div> 
+                { loading && (
+                <Loader active inline='centered' />
+                )}
                 <Slider {...settings}>
                     {data.map((album)=>(
                             <div className="item__album">

@@ -103,7 +103,7 @@ render(){
                 <div className="container">
                     <nav className="nav ">
                         <div className="nav__hamburger " onClick={this.handleClick} >
-                            <Icon name={'menu'} size={40}  />
+                            <Icon name={click ? 'cross' :'menu'} size={20}  />
                         </div>
                         <div className="search">
                             <a href="#" className="icon__item" onClick={this.handleSearchbar}>
@@ -130,24 +130,20 @@ render(){
                 </div>
                 <nav id="nav__down" className="nav navbar">
                     <div className={click ? 'nav-menu-show open' :'nav-menu-show'}>
-                        <div className="menu__top">
-                            <a href="/" className="home">
-                                <Icon name={'home'} size={30} color={'white'} />
-                            </a>
-                            <a href="#" className="close__toggle" onClick={this.closeMenu}>
-                                <Icon name={'cross'} size={25} color={'white'} />
-                            </a>
-                        </div>
+                        
                         <ul className="nav__list">
-                            <li className="nav__item">
-                                <a href="#" className="nav__link scroll-link">FEATURED</a>
-                            </li>
-                            {window.outerWidth <600 ? <hr/>: null}
+                            
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">NEWS</a>
                             </li>
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">VIDEOS</a>
+                            </li>
+                            <li className="nav__item">
+                                <a href="#" className="nav__link scroll-link">NEWS ARRIVALS</a>
+                            </li>
+                            <li className="nav__item">
+                                <a href="#" className="nav__link scroll-link">LAST INTERVIEWS</a>
                             </li>
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">SUPPORT</a>
