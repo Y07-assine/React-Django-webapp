@@ -67,7 +67,7 @@ ul {
 
 .nav__logo img {
   width: 200px;
-  margin-top: 1.5rem;
+  margin-top: .5rem;
 }
 
 .nav__logo {
@@ -84,7 +84,9 @@ ul {
   display: none;
   cursor: pointer;
 }
-
+.nav__item a{
+  color: white;
+}
 
 .icon__item {
   display: flex;
@@ -630,7 +632,7 @@ img{
   border-radius: 5%;
 }
 .album-title{
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 @media (min-width: 768px){
 .tracklist p {

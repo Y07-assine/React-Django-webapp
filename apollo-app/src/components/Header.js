@@ -4,7 +4,10 @@ import {artistURL} from '../constants';
 import Icon from './ui/icon';
 import axios from 'axios';
 import {Credentials} from './api/SpotifyAPI/Credentials';
-import { Link,history,Redirect } from 'react-router-dom';
+import { Link as RouteLink } from 'react-router-dom';
+import {animateScroll as scroll,Link} from 'react-scroll';
+import Playlist from './api/SpotifyAPI/Playlist';
+import { Dropdown} from 'semantic-ui-react';
 
 class Header extends Component {
     constructor(props){
@@ -40,6 +43,7 @@ class Header extends Component {
     setDisplay(){
         this.setState({display:!this.state.display});
     }
+    
     componentDidMount(){
         const spotity = Credentials();
         this.setState({loading:true});
@@ -96,6 +100,9 @@ render(){
         matches=[];
     }
     }
+    const toggleHome=()=>{
+        scroll.scrollToTop();
+    }
     return (
         
         <header className="header">
@@ -111,10 +118,10 @@ render(){
                                 <Icon name={'search'} size={30} />
                             </a>
                         </div>
-                        <div className="nav__logo">
-                            <a href="/"  > 
+                        <div className="nav__logo" onClick={toggleHome}>
+                            
                                 <img src={logo} alt='apollo for music' />
-                            </a>
+                            
                         </div>
                         <div className="connexion">
                             <a href="#" className="icon__item">
@@ -134,13 +141,13 @@ render(){
                         <ul className="nav__list">
                             
                             <li className="nav__item">
-                                <a href="#" className="nav__link scroll-link">NEWS</a>
+                            <Link to="news" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >NEWS</Link>
                             </li>
                             <li className="nav__item">
-                                <a href="#" className="nav__link scroll-link">VIDEOS</a>
+                                <Link to="clips" activeClass="active" spy={true} smooth={true}  duration={-100} >VIDEOS</Link>
                             </li>
                             <li className="nav__item">
-                                <a href="#" className="nav__link scroll-link">NEWS ARRIVALS</a>
+                                <Link to="album" activeClass="active" spy={true} smooth={true}   duration={-100} >NEW ARRIVALS</Link>
                             </li>
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">LAST INTERVIEWS</a>
@@ -175,9 +182,9 @@ render(){
                         }).map((artist)=>{
                             return(
                                 <div className="result">
-                                    <Link to={`/artist/${this.state.artistID ? this.state.artistID : artist.id}`}>
+                                    <RouteLink to={`/artist/${this.state.artistID ? this.state.artistID : artist.id}`}>
                                         <img src={artist.images[0].url} alt={artist.name}/>
-                                    </Link>
+                                    </RouteLink>
                                         <span>{artist.name}</span>
                                     
                                 </div>

@@ -96,7 +96,7 @@ class Album extends Component{
             ]
         }
         return(
-            <section className="albums">
+            <section className="albums" id="album">
                 <div className="container">
                 <div className="lgfgYE album">
                     <span className="title">New arrivals</span>

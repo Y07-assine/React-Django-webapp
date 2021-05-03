@@ -30,7 +30,7 @@ class ListNews extends Component{
     return(
         <>
         <Bignews title={lastdata.title} source={lastdata.source} author={lastdata.author_name} date={lastdata.date} image={lastdata.image} />
-        <section className="py-5 news">
+        <section className="py-5 news" id="news">
             <div className="row grid-container">
                 {data.slice(1).map((news)=>(
                         <News key={news.id} news={news} />

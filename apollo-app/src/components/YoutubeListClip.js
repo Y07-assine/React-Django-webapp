@@ -60,7 +60,7 @@ class YoutubeListClip extends Component {
           ]
       }
         return (
-        <section className="py-5 news">
+        <section className="py-5 news" id="clips">
             <div className="lgfgYE clips">
                 <span className="title">LAST CLIPS</span>
             </div> 

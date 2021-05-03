@@ -54,7 +54,7 @@ class Playlist extends Component{
     render(){
         const {data,playlistimage, error ,loading} = this.state;
         return(
-            <section className="py-5 news">
+            <section className="py-5 news" id="playlist">
                <div className="classement__item row card ">
                <div className='card-inner'>
                 <div className='card-front'>

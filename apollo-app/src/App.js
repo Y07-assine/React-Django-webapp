@@ -7,7 +7,7 @@ import AlbumDetails from './components/api/SpotifyAPI/AlbumDetails';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ArtistDescription from './components/api/SpotifyAPI/ArtistDescription';
-
+import ScrollToTop from './components/ScrollToTop';
 
 
 
@@ -18,6 +18,7 @@ render(){
     return (
       
       <Router>
+        <ScrollToTop />
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
