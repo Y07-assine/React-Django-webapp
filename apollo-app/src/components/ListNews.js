@@ -3,7 +3,7 @@ import News from './News'
 import Bignews from './Bignews'
 import {newsListURL} from '../constants'
 import axios from 'axios';
-
+import { Loader } from 'semantic-ui-react';
 
 
 
@@ -29,6 +29,9 @@ class ListNews extends Component{
         const {data, error ,loading,lastdata} = this.state;
     return(
         <>
+        { loading && (
+                <Loader active inline='centered' />
+        )}
         <Bignews title={lastdata.title} source={lastdata.source} author={lastdata.author_name} date={lastdata.date} image={lastdata.image} />
         <section className="py-5 news" id="news">
             <div className="row grid-container">

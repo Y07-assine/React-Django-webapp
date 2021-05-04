@@ -130,10 +130,15 @@ ul {
   display: flex;
   justify-content: space-between;
   color: white;
-  margin-inline: 6%;
+  margin-inline: 20%;
 
 }
-
+@media only screen and (max-width: 900px) {
+  .nav__list{
+    margin-inline: 5%;
+  
+  }
+}
 
 .nav__item:not(:last-child){
   margin-right: 5rem;
@@ -237,7 +242,7 @@ ul {
   .nav__menu {
       position: fixed;
       top: 0;
-      left: -40rem;
+      left: -50rem;
       background-color: rgba(0,0,0,.6);
       z-index: 9990;
       height: 100%;
@@ -467,6 +472,15 @@ img{
 .album__description{
   margin-top: 3rem;
 }
+.album__description img{
+  border: yellow solid;
+    border-radius: 3%;
+}
+@media only screen and (max-width: 767px) {
+.album__description img{
+  width:70% ;
+}
+}
 .artist__description img{
   position: relative;
   top: 40%;
@@ -542,14 +556,14 @@ img{
     position: relative;
     background: rgba(0,0,0,.6);
     padding: 2.25rem 0 1.5rem 0;
-    z-index: 4;
+    z-index: 0;
     color: #fff;
 }
 .header_with_cover_artist{
   position: relative;
     background: rgba(0,0,0,.6);
     padding: 2.25rem 0 1.5rem 0;
-    z-index: 4;
+    z-index: 0;
     color: #fff;
     display: flex;
 }
@@ -562,7 +576,7 @@ img{
   margin-right: 0.5rem;
 }
 .artist-title{
-  margin-top: 9rem;
+  margin-top: 9rem !important;
   
 }
 
@@ -641,7 +655,7 @@ img{
   border-radius: 5%;
 }
 .album-title{
-  margin-top: 1rem !important;
+  margin-top: 5rem !important;
 }
 @media (min-width: 768px){
 .tracklist p {
