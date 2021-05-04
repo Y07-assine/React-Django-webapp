@@ -103,6 +103,14 @@ render(){
     const toggleHome=()=>{
         scroll.scrollToTop();
     }
+    const dropdown = [
+        { key: 1, text: 
+            <Link to="clips" activeClass="active" spy={true} smooth={true} offset={-200} duration={500} >VIDEOS</Link>,
+         value: 1 },
+        { key: 2, text:
+             <Link to="album" activeClass="active" spy={true} smooth={true} offset={-200}  duration={500} >ALBUMS</Link>
+        , value: 2 },
+      ]
     return (
         
         <header className="header">
@@ -141,16 +149,13 @@ render(){
                         <ul className="nav__list">
                             
                             <li className="nav__item">
-                            <Link to="news" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >NEWS</Link>
+                            <Link to="news" activeClass="active" spy={true} smooth={true} offset={-200} duration={500} >NEWS</Link>
                             </li>
                             <li className="nav__item">
-                                <Link to="clips" activeClass="active" spy={true} smooth={true}  duration={-100} >VIDEOS</Link>
+                                <Dropdown text='NEW ARRIVALS' options={dropdown} simple item />
                             </li>
                             <li className="nav__item">
-                                <Link to="album" activeClass="active" spy={true} smooth={true}   duration={-100} >NEW ARRIVALS</Link>
-                            </li>
-                            <li className="nav__item">
-                                <a href="#" className="nav__link scroll-link">LAST INTERVIEWS</a>
+                                <Link to="playlist" activeClass="active" spy={true} smooth={true} offset={-200}  duration={500} >PLAYLIST</Link>
                             </li>
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">SUPPORT</a>
