@@ -19,7 +19,6 @@ render(){
       
       <Router>
         <ScrollToTop />
-        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route  path="/album/:id" component={AlbumDetails} />

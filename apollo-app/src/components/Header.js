@@ -6,7 +6,6 @@ import axios from 'axios';
 import {Credentials} from './api/SpotifyAPI/Credentials';
 import { Link as RouteLink } from 'react-router-dom';
 import {animateScroll as scroll,Link} from 'react-scroll';
-import Playlist from './api/SpotifyAPI/Playlist';
 import { Dropdown} from 'semantic-ui-react';
 
 class Header extends Component {
@@ -14,6 +13,7 @@ class Header extends Component {
         super(props);
         this.state={
             click:false,
+            location:"",
             searchbar:false,
             display:false,
             options:[],
@@ -24,6 +24,16 @@ class Header extends Component {
         this.closeMenu=this.closeMenu.bind(this);
         this.closeSearchbar=this.closeSearchbar.bind(this);
         this.setDisplay=this.setDisplay.bind(this);
+        this.route=this.route.bind(this);
+    }
+    
+    route(){
+        console.log("test");
+        if(this.state.location !== '/'){
+            console.log("test");
+            window.location.href="http://localhost:8000/";
+        }
+        this.setState({click:false});
     }
 
     handleClick(){
@@ -45,7 +55,8 @@ class Header extends Component {
     }
     
     componentDidMount(){
-        console.log(window.location.pathname);
+        this.setState({location:window.location.pathname});
+        console.log(this.state.location);
         console.log(window.location.href);
         const spotity = Credentials();
         this.setState({loading:true});
@@ -104,10 +115,10 @@ render(){
     }
     const dropdown = [
         { key: 1, text: 
-            <Link to="clips" activeClass="active" spy={true} smooth={true} offset={-200} duration={500} onClick={this.closeMenu} >VIDEOS</Link>,
+            <Link to="clips" activeClass="active" spy={true} smooth={true} offset={-200} duration={500} onClick={this.route} >VIDEOS</Link>,
          value: 1 },
         { key: 2, text:
-             <Link to="album" activeClass="active" spy={true} smooth={true} offset={-200}  duration={500} onClick={this.closeMenu} >ALBUMS</Link>
+             <Link to="album" activeClass="active" spy={true} smooth={true} offset={-200}  duration={500} onClick={this.route} >ALBUMS</Link>
         , value: 2 },
       ]
     return (
@@ -117,7 +128,7 @@ render(){
                 <div className="container">
                     <nav className="nav ">
                         <div className="nav__hamburger " onClick={this.handleClick} >
-                            <Icon name={click ? 'cross' :'menu'} size={20}  />
+                            <Icon name={click ? 'cross' :'menu'} size={25}  />
                         </div>
                         <div className="search">
                             <a href="#" className="icon__item" onClick={this.handleSearchbar}>
@@ -148,13 +159,13 @@ render(){
                         <ul className="nav__list">
                             
                             <li className="nav__item">
-                            <Link to="news" activeClass="active" spy={true} smooth={true} offset={-200} duration={500} onClick={this.closeMenu} >NEWS</Link>
+                            <Link to="news" activeClass="active" spy={true} smooth={true} offset={-200} duration={500} onClick={this.route} >NEWS</Link>
                             </li>
                             <li className="nav__item" >
                                 <Dropdown text='NEW ARRIVALS' options={dropdown} simple item />
                             </li>
                             <li className="nav__item">
-                                <Link to="playlist" activeClass="active" spy={true} smooth={true} offset={-200}  duration={500} onClick={this.closeMenu} >PLAYLIST</Link>
+                                <Link to="playlist" activeClass="active" spy={true} smooth={true} offset={-200}  duration={500} onClick={this.route} >PLAYLIST</Link>
                             </li>
                             <li className="nav__item">
                                 <a href="#" className="nav__link scroll-link">SUPPORT</a>

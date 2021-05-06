@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import {Credentials} from './Credentials';
-import {albumURL} from '../../../constants';
-import Slider from 'react-slick';
+import Header from '../../Header';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
 import {CircularProgress} from '@material-ui/core';
@@ -64,6 +63,7 @@ class AlbumDetails extends Component{
         };
         return(
             <>
+            <Header />
             <section className="album__details" style={ sectionStyle } >
                 <div className="container">
                 <div className="row header_with_cover_art">

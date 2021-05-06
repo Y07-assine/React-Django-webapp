@@ -4,6 +4,7 @@ import {Credentials} from './Credentials';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
 import {CircularProgress} from '@material-ui/core';
+import Header from '../../Header';
 
 class ArtistDescription extends Component{
 
@@ -72,6 +73,7 @@ class ArtistDescription extends Component{
         };
         return(
             <>
+            <Header />
             <section className="artist__details" style={ sectionStyle } >
                 <div className="container">
                 <div className="row header_with_cover_artist">
