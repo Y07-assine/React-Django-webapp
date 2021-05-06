@@ -45,6 +45,8 @@ class Header extends Component {
     }
     
     componentDidMount(){
+        console.log(window.location.pathname);
+        console.log(window.location.href);
         const spotity = Credentials();
         this.setState({loading:true});
         axios('https://accounts.spotify.com/api/token',{

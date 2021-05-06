@@ -655,7 +655,7 @@ img{
   border-radius: 5%;
 }
 .album-title{
-  margin-top: 5rem !important;
+  margin-top: 2rem !important;
 }
 @media (min-width: 768px){
 .tracklist p {
